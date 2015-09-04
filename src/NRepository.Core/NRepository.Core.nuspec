@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>NRepository.Core</id>
+    <version>3.3.0.0</version>
+    <title>NRepository.Core</title>
+    <authors>John Kelly</authors> 
+    <licenseUrl>https://nrepository.codeplex.com/license</licenseUrl>
+    <projectUrl>https://nrepository.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://bluepear-public.sharepoint.com/SiteAssets/NRepository.png</iconUrl>
+    <description>NRepository.Core is a generic repository library with a strong focus on CQRS.</description>
+    <releaseNotes>
+      1. Added SwitchQueryStrategy
+      2. Added factory intereptor classes
+      3. Added Single/First etc Async extension methods
+    </releaseNotes>
+    <copyright>© Blue Pear (Software) Ltd. 2015</copyright>
+    <tags>micro services Repository EF entity framework cqrs core UOW unit of work MongoDB NRepository IRepository Generic Unit Of Work</tags>
+  </metadata>
+  <files>
+    <file src="bin\release\nrepository.core.dll" target="lib\net45" />
+  </files>
+</package>

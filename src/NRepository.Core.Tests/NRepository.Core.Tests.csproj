@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B0E78925-E976-4B53-BFB3-D86D49B3A184}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NRepository.Core.Tests</RootNamespace>
+    <AssemblyName>NRepository.Core.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CSHARP_40|AnyCPU'">
+    <OutputPath>bin\CSHARP_40\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NRepository.TestKit, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NRepository.TestKit.3.1.0.0\lib\net45\NRepository.TestKit.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Command\EmptyInterceptors.cs" />
+    <Compile Include="PersonsData.cs" />
+    <Compile Include="Query\ConditionalExtensionTests.cs" />
+    <Compile Include="Query\QueryStrategies\PagingQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\MaterialiseQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\MultipleTextSearchSpecificationStrategyTests.cs" />
+    <Compile Include="Query\SpecificationStrategyTests.cs" />
+    <Compile Include="RepositoryBaseTests.cs" />
+    <Compile Include="_ToImplement\InMemoryTests.cs" />
+    <Compile Include="Query\Interceptors\InterceptorTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyInfoTests.cs" />
+    <Compile Include="Query\EventHandlers\QueryEventHandlersTests.cs" />
+    <Compile Include="Query\QueryStrategies\AggregateQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\OrderByDescendingQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\OrderByQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\ReverseQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\SkipQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\TakeQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\ThenByDescendingQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryStrategies\ThenByQueryStrategyTests.cs" />
+    <Compile Include="Query\QueryRepositoryBaseTests.cs" />
+    <Compile Include="Query\Interceptors\AdditionalViewsInterceptor.cs" />
+    <Compile Include="TestsEntities\Animal.cs" />
+    <Compile Include="TestsEntities\Cat.cs" />
+    <Compile Include="TestsEntities\Child.cs" />
+    <Compile Include="TestsEntities\CoupleView.cs" />
+    <Compile Include="TestsEntities\FamilyQueryRepository.cs" />
+    <Compile Include="TestsEntities\FamilyTestData.cs" />
+    <Compile Include="Query\Interceptors\PersonProjection.cs" />
+    <Compile Include="TestsEntities\Names.cs" />
+    <Compile Include="TestsEntities\Parent.cs" />
+    <Compile Include="TestsEntities\Person.cs" />
+    <Compile Include="TestsEntities\PersonIncludes.cs" />
+    <Compile Include="TestsEntities\Rabitt.cs" />
+    <Compile Include="_Utilities\NUnitExtensions.cs" />
+    <Compile Include="_Utilities\SimpleEntity.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NRepository.Core\NRepository.Core.csproj">
+      <Project>{305568d8-ed3b-4174-8f55-58eb44a510c8}</Project>
+      <Name>NRepository.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
