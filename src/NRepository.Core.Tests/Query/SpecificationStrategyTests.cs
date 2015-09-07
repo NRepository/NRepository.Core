@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BluePear.Repository.CoreTests.Query
 {
@@ -22,6 +20,7 @@ namespace BluePear.Repository.CoreTests.Query
                 return (IQueryable<T>)this.QueryableRepository.GetQueryableEntities<T>(additionalQueryData);
             }
         }
+
         private class StringSearchSpecificationQueryStrategy : SpecificationQueryStrategy<string>
         {
 
@@ -41,11 +40,11 @@ namespace BluePear.Repository.CoreTests.Query
             var repository = new InMemoryQueryRepository(new[] { "1", "2", "3", "4", "5", "6", "7", "8" });
 
             var counter = new List<string>();
-            var result = repository.GetEntities<string>(
+            repository.GetEntities<string>(
                 counter,
                 new StringSearchSpecificationQueryStrategy() &
                 new StringSearchSpecificationQueryStrategy() &
-                (new StringSearchSpecificationQueryStrategy() | new StringSearchSpecificationQueryStrategy()) & new StringSearchSpecificationQueryStrategy() & new StringSearchSpecificationQueryStrategy(), 
+                (new StringSearchSpecificationQueryStrategy() | new StringSearchSpecificationQueryStrategy()) & new StringSearchSpecificationQueryStrategy() & new StringSearchSpecificationQueryStrategy(),
                 new StringSearchQueryStrategy()
                 );
 
