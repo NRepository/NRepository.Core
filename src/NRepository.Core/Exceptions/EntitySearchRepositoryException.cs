@@ -17,10 +17,10 @@
             EntityName = entityName;
 
             SearchParameters = new Dictionary<string, string>();
-            for (int i = 0; i < parameters.Length; i += 2)
-            {
-                SearchParameters.Add(parameters[i], parameters[i + 1]);
-            }
+            //for (int i = 0; i < parameters.Length; i += 2)
+            //{
+            //    SearchParameters.Add(parameters[i], parameters[i + 1]);
+            //}
 
             SearchParameters.Add("Rows found", RowsFound.ToString());
         }

@@ -11,9 +11,10 @@
     <iconUrl>https://bluepear-public.sharepoint.com/SiteAssets/NRepository.png</iconUrl>
     <description>NRepository.Core is a generic repository library with a strong focus on CQRS.</description>
     <releaseNotes>
-      1. Added SwitchQueryStrategy
-      2. Added factory intereptor classes
-      3. Added Single/First etc Async extension methods
+      1. Reduced footprint
+      2. Removed specifcations from IQueryRepository so everything now runs on QueryStrategies. This fixes:
+        2.1 Fixes MaterialsedQueryStratefy producing incorrect results when specification using specifications
+        2.1 Fixes PagingQueryStrategy. Row count is now returned is correct.
     </releaseNotes>
     <copyright>© 2015 John Kelly </copyright>
     <tags>micro services Repository EF entity framework cqrs core UOW unit of work MongoDB NRepository IRepository Generic Unit Of Work</tags>

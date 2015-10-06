@@ -4,13 +4,13 @@ namespace NRepository.Core.Events
 
     public class GetEntityRepositoryQueryEvent : SimpleRepositoryQueryEvent
     {
-        public GetEntityRepositoryQueryEvent(IQueryRepository repository, IQueryStrategy specification, IQueryStrategy queryStrategy, object additionalQueryData)
-            : this(repository, specification, queryStrategy, additionalQueryData, null)
+        public GetEntityRepositoryQueryEvent(IQueryRepository repository, IQueryStrategy queryStrategy, object additionalQueryData)
+            : this(repository, queryStrategy, additionalQueryData, null)
         {
 
         }
-        public GetEntityRepositoryQueryEvent(IQueryRepository repository, IQueryStrategy specification, IQueryStrategy queryStrategy, object additionalQueryData, bool? throwExceptionIfZeroOrManyFound)
-            : base(repository, specification, queryStrategy, additionalQueryData, throwExceptionIfZeroOrManyFound)
+        public GetEntityRepositoryQueryEvent(IQueryRepository repository, IQueryStrategy queryStrategy, object additionalQueryData, bool? throwExceptionIfZeroOrManyFound)
+            : base(repository, queryStrategy, additionalQueryData, throwExceptionIfZeroOrManyFound)
         {
         }
     }

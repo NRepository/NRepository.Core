@@ -41,18 +41,18 @@
             entities.Count().ShouldEqual(2);
         }
 
-        [Test]
-        public void CheckAdditionalDataIsPassedToTheProjection()
-        {
-            // Arrange
-            var repositoryViews = new FamilyQueryRepository(new AdditionalViewsInterceptor());
-            var additionQueryData = "Dummy" ;
+        //[Test]
+        //public void CheckAdditionalDataIsPassedToTheProjection()
+        //{
+        //    // Arrange
+        //    var repositoryViews = new FamilyQueryRepository(new AdditionalViewsInterceptor());
+        //    var additionQueryData = "Dummy" ;
 
-            // Act
-            var entities = repositoryViews.GetEntities<PersonProjection>(additionQueryData);
+        //    // Act
+        //    var entities = repositoryViews.GetEntities<PersonProjection>(additionQueryData);
 
-            // Assert
-            entities.Any(p => p.AdditionalQueryData == null).ShouldEqual(false);
-        }
+        //    // Assert
+        //    entities.Any(p => p.AdditionalQueryData == null).ShouldEqual(false);
+        //}
     }
 }

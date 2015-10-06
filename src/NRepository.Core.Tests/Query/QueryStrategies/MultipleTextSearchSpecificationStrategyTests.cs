@@ -28,7 +28,7 @@ namespace NRepository.Core.Query.Tests
             };
 
             var repository = new InMemoryRepository(entities);
-            var items = repository.GetEntities(
+            var items = repository.GetEntities<Item>(
                 new MultipleTextSearchSpecificationStrategy<Item>("x", p => p.Item1, p => p.Item2));
 
             items.Count().ShouldEqual(2);

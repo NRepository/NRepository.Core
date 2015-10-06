@@ -43,7 +43,7 @@
 
             // Assert
             Assert.IsInstanceOf<DefaultQueryStrategy>(queryEvent.QueryStrategy);
-            Assert.IsTrue(queryEvent.SpecificationStrategy == null);
+            Assert.IsTrue(queryEvent.QueryStrategy == null);
             Assert.IsNull(queryEvent.ThrowExceptionIfZeroOrManyFound);
         }
 
@@ -59,8 +59,7 @@
             var queryEvent = (GetEntitiesRepositoryQueryEvent)eventHandler.QueriedEventList.Single();
 
             // Assert
-            Assert.IsInstanceOf<DefaultQueryStrategy>(queryEvent.QueryStrategy);
-            Assert.IsInstanceOf<ExpressionSpecificationQueryStrategy<Person>>(queryEvent.SpecificationStrategy);
+            Assert.IsInstanceOf<ExpressionSpecificationQueryStrategy<Person>>(queryEvent.QueryStrategy);
             Assert.IsNull(queryEvent.ThrowExceptionIfZeroOrManyFound);
         }
 

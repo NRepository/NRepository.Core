@@ -34,7 +34,6 @@ namespace NRepository.Core.Query.Tests
             results.Count().ShouldEqual(2);
             results.First().ShouldEqual(3);
             results.Last().ShouldEqual(4);
-            query.RowCount.HasValue.ShouldEqual(false);
         }
 
 
@@ -53,7 +52,26 @@ namespace NRepository.Core.Query.Tests
             results.First().ShouldEqual(3);
             results.Last().ShouldEqual(4);
             query.RowCount.HasValue.ShouldEqual(true);
-            query.RowCount.ShouldEqual(9);
+            query.RowCount.ShouldEqual(entities.Length);
+        }
+
+        [Test]
+        public void CheckResultsWithCountFunc()
+        {
+            // Arrange
+            var entities = new object[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            // Act
+            Func<int> rowCountFunc = null;
+            var query = new PagingQueryStrategy(2, 2, out rowCountFunc);
+            var results = entities.AddQueryStrategy(query).ToList();
+
+            // Assert
+            results.Count().ShouldEqual(2);
+            results.First().ShouldEqual(3);
+            results.Last().ShouldEqual(4);
+            query.RowCount.HasValue.ShouldEqual(true);
+            rowCountFunc().ShouldEqual(9);
         }
     }
 }
