@@ -71,7 +71,7 @@ namespace NRepository.Core.Query
 
             var allResults = queryStrategy.GetQueryableEntities<T>(additionalQueryData).Take(2).AsEnumerable();
 
-            QueryEventHandler.RepositoryQueriedEventHandler.Handle(new GetEntityRepositoryQueryEvent(
+            QueryEventHandler.RepositoryQueriedEventHandler.Handle(new SimpleRepositoryQueryEvent(
                  this,
                  queryStrategy,
                  additionalQueryData,
@@ -80,7 +80,7 @@ namespace NRepository.Core.Query
             if (allResults.Count() != 1 && throwExceptionIfZeroOrManyFound)
             {
                 var rowsFound = allResults.Count();
-                throw new EntitySearchRepositoryException(rowsFound, typeof(T).Name, queryStrategy.ToString());
+                throw new EntitySearchRepositoryException(rowsFound, typeof(T).Name, queryStrategy);
             }
 
             var result = allResults.FirstOrDefault();
@@ -94,7 +94,7 @@ namespace NRepository.Core.Query
 
             queryStrategy.QueryableRepository = this;
 
-            QueryEventHandler.RepositoryQueriedEventHandler.Handle(new GetEntitiesRepositoryQueryEvent(
+            QueryEventHandler.RepositoryQueriedEventHandler.Handle(new SimpleRepositoryQueryEvent(
                  this,
                  queryStrategy,
                  additionalQueryData));

@@ -37,9 +37,9 @@ namespace NRepository.Core.Query
                 {
                     return queryable.First();
                 }
-                catch (InvalidOperationException ioEx)
+                catch (InvalidOperationException)
                 {
-                    throw new EntityRepositoryException("No rows found", ioEx);
+                    throw new EntitySearchRepositoryException(0, typeof(T).Name, null);
                 }
             });
         }
@@ -52,13 +52,12 @@ namespace NRepository.Core.Query
                 {
                     return queryable.SingleOrDefault();
                 }
-                catch (InvalidOperationException ioEx)
+                catch (InvalidOperationException)
                 {
-                    throw new EntityRepositoryException(string.Format("Expected 1 row but found {0}", queryable.Count()), ioEx);
+                    throw new EntitySearchRepositoryException(queryable.Count(), typeof(T).Name, null);
                 }
             });
         }
-
 
         public static async Task<T> SingleAsync<T>(this IQueryable<T> queryable) where T : class
         {
@@ -68,9 +67,9 @@ namespace NRepository.Core.Query
                 {
                     return queryable.Single();
                 }
-                catch (InvalidOperationException ioEx)
+                catch (InvalidOperationException)
                 {
-                    throw new EntityRepositoryException(string.Format("Expected 1 row but found {0}", queryable.Count()), ioEx);
+                    throw new EntitySearchRepositoryException(queryable.Count(), typeof(T).Name, null);
                 }
             });
         }

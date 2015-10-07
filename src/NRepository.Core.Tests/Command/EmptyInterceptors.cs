@@ -4,10 +4,6 @@
     using NRepository.Core.Tests;
     using NUnit.Framework;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class SaveInterceptor : ISaveCommandInterceptor
     {
@@ -19,7 +15,7 @@
         public int Save(ICommandRepository repository, Func<int> saveFunc)
         {
             return 0;
-        }   
+        }
     }
 
     public class AddCommandInterceptor : IAddCommandInterceptor

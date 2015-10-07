@@ -35,7 +35,7 @@ namespace NRepository.Core.Tests
         public int GroupId
         {
             get;
-            private set;
+
         }
     }
 }

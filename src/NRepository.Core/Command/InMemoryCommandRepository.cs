@@ -54,7 +54,7 @@ namespace NRepository.Core.Command
         public ICollection<object> Entities
         {
             get;
-            private set;
+
         }
 
         protected ICommandInterceptors CommandInterceptors

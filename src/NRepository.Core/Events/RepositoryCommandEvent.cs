@@ -1,6 +1,5 @@
 namespace NRepository.Core.Events
 {
-    using System;
     using NRepository.Core.Command;
     using NRepository.Core.Utilities;
 
@@ -13,10 +12,6 @@ namespace NRepository.Core.Events
             CommandRepository = commandRepository;
         }
 
-        public ICommandRepository CommandRepository
-        {
-            get;
-            private set;
-        }
+        public ICommandRepository CommandRepository { get; }
     }
 }

@@ -26,13 +26,13 @@ namespace NRepository.Core.Query
         public bool RunStrategy
         {
             get;
-            private set;
+
         }
 
         public IEnumerable<Func<IQueryStrategy>> QueryStrategiesFunctions
         {
             get;
-            private set;
+
         }
 
         public IEnumerable<IQueryStrategy> QueryStrategies

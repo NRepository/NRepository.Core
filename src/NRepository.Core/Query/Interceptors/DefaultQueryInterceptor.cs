@@ -4,7 +4,7 @@ namespace NRepository.Core.Query
     using System;
     using System.Linq;
 
-    public class DefaultQueryInterceptor : IQueryInterceptor
+    public sealed class DefaultQueryInterceptor : IQueryInterceptor
     {
         public IQueryable<T> Query<T>(IQueryRepository repository, IQueryable<T> query, object additionalQueryData) where T : class
         {

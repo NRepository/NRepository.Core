@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>NRepository.Core</id>
-    <version>3.3.0.0</version>
+    <version>4.0.0.0</version>
     <title>NRepository.Core</title>
     <authors>John Kelly</authors> 
     <licenseUrl>https://github.com/j-kelly/NRepository.Core/blob/master/LICENSE</licenseUrl>
@@ -20,6 +20,6 @@
     <tags>micro services Repository EF entity framework cqrs core UOW unit of work MongoDB NRepository IRepository Generic Unit Of Work</tags>
   </metadata>
   <files>
-    <file src="bin\release\nrepository.core.dll" target="lib\net45" />
+    <file src="bin\release\nrepository.core.dll" target="lib\net452" />
   </files>
 </package>

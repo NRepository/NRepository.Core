@@ -4,8 +4,6 @@ namespace NRepository.Core.Command
 
     public interface ISaveCommandInterceptor : ICommandInterceptor
     {
-        bool ThrowOriginalException { get; }
-
         int Save(ICommandRepository repository, Func<int> saveFunc);
     }
 }

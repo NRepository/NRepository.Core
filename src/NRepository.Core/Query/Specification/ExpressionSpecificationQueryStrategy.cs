@@ -9,7 +9,7 @@
         where TEntity : class
     {
         public ExpressionSpecificationQueryStrategy(Expression<Func<TEntity, bool>> matchingCriteria)
-         :this(null, matchingCriteria)
+         : this(null, matchingCriteria)
         {
         }
 
@@ -24,7 +24,6 @@
         public Expression<Func<TEntity, bool>> MatchingCriteria
         {
             get;
-            private set;
         }
 
         public override Expression<Func<TEntity, bool>> SatisfiedBy(object additionalQueryData)

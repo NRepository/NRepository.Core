@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,21 +49,11 @@
     <Reference Include="System.Data.Entity" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggregateEntityAddedEventHandler.cs" />
-    <Compile Include="AggregateEntityDeletedEventHandler.cs" />
-    <Compile Include="AggregateEntityModifiedEventHandler.cs" />
-    <Compile Include="AggregateRepositorySavedEventHandler.cs" />
-    <Compile Include="AggregateRepositoryEventsHandlers.cs" />
-    <Compile Include="AggregateRepositoryQueryEventHandler.cs" />
-    <Compile Include="Command\EntityStateWrapper.cs" />
     <Compile Include="Command\ICommandInterceptor.cs" />
-    <Compile Include="Command\IEntityStateWrapper.cs" />
+    <Compile Include="Command\InMemoryCommandRepository.cs" />
     <Compile Include="Command\Interceptors\CommandInterceptors.cs" />
-    <Compile Include="Command\BatchCommandRepositoryBase.cs" />
     <Compile Include="Command\CommandRepositoryBase.cs" />
     <Compile Include="Command\DefaultCommandEventsHandlers.cs" />
-    <Compile Include="Command\InMemoryCommandRepository.cs" />
-    <Compile Include="Command\State.cs" />
     <Compile Include="DefaultRepositoryEventsHandlers.cs" />
     <Compile Include="Events\DefaultEntityAddedHandler.cs" />
     <Compile Include="Events\DefaultEntityModifiedHandler.cs" />
@@ -71,8 +61,6 @@
     <Compile Include="Events\EntityAddedEvent.cs" />
     <Compile Include="Events\EntityDeletedEvent.cs" />
     <Compile Include="Events\EntityModifiedEvent.cs" />
-    <Compile Include="Events\GetEntitiesRepositoryQueryEvent.cs" />
-    <Compile Include="Events\GetEntityRepositoryQueryEvent.cs" />
     <Compile Include="Events\RepositoryEvent.cs" />
     <Compile Include="Events\SimpleRepositoryQueryEvent.cs" />
     <Compile Include="Events\IRepositoryCommandEvent.cs" />
@@ -82,11 +70,12 @@
     <Compile Include="Events\IRepositoryQueryEventHandler.cs" />
     <Compile Include="Events\RepositoryCommandEvent.cs" />
     <Compile Include="Events\RepositorySavedEvent.cs" />
+    <Compile Include="PropertyInfo.cs" />
+    <Compile Include="Query\InMemoryQueryRepository.cs" />
     <Compile Include="InMemoryRepository.cs" />
     <Compile Include="IRepositoryInterceptors.cs" />
     <Compile Include="Query\DefaultQueryEventHandlers.cs" />
     <Compile Include="Query\Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Query\InMemoryQueryRepository.cs" />
     <Compile Include="Query\Extensions\IQueryableExtensions.cs" />
     <Compile Include="Query\Interceptors\Factories\FactoryQueryInterceptor.cs" />
     <Compile Include="Query\Interceptors\Factories\FactoryQuery`1.cs" />
@@ -104,7 +93,6 @@
     <Compile Include="Query\Interceptors\IQueryInterceptors.cs" />
     <Compile Include="Query\Interceptors\IQueryInterceptor.cs" />
     <Compile Include="IRepositoryEventsHandlers.cs" />
-    <Compile Include="PropertyInfo.cs" />
     <Compile Include="Command\Interceptors\IAddCommandInterceptor.cs" />
     <Compile Include="Command\Interceptors\IDeleteCommandInterceptor.cs" />
     <Compile Include="Command\Interceptors\ICommandInterceptors.cs" />
@@ -113,7 +101,6 @@
     <Compile Include="Query\IQueryRepository.cs" />
     <Compile Include="Command\Interceptors\IModifyCommandInterceptor.cs" />
     <Compile Include="Command\Interceptors\ISaveCommandInterceptor.cs" />
-    <Compile Include="Query\SingleQueryRepository.cs" />
     <Compile Include="Query\Specification\ExpressionSpecificationQueryStrategy.cs" />
     <Compile Include="Query\Specification\ISpecificationQueryStrategy.cs" />
     <Compile Include="Query\Strategies\AggregateQueryStrategyT.cs" />
@@ -124,25 +111,20 @@
     <Compile Include="Query\Strategies\DefaultSpecificationQueryStrategy.cs" />
     <Compile Include="Query\Strategies\ExpressionQueryStrategy.cs" />
     <Compile Include="Query\Strategies\MaterialiseQueryStrategy.cs" />
-    <Compile Include="Query\Strategies\MultipleTextSearchSpecificationStrategy.cs" />
+    <Compile Include="Query\Strategies\TextSearchSpecificationStrategy.cs" />
     <Compile Include="Query\Strategies\OfTypeQueryStrategy.cs" />
     <Compile Include="Query\Strategies\OrderByDescendingQueryStrategy.cs" />
     <Compile Include="Query\Strategies\OrderByDescendingQueryStrategyT.cs" />
     <Compile Include="Query\Strategies\OrderByQueryStrategy.cs" />
     <Compile Include="Query\Strategies\OrderByQueryStrategyT.cs" />
-    <Compile Include="Query\Strategies\FilterByPageQueryStrategy.cs" />
     <Compile Include="Command\Interceptors\DefaultAddCommandInterceptor.cs" />
     <Compile Include="Command\Interceptors\DefaultDeleteCommandInterceptor.cs" />
     <Compile Include="Query\Strategies\DefaultQueryStrategy.cs" />
     <Compile Include="Command\Interceptors\DefaultModifyCommandInterceptor.cs" />
     <Compile Include="Command\Interceptors\DefaultSaveCommandInterceptor.cs" />
-    <Compile Include="Exceptions\EntityUpdateRepositoryException.cs" />
-    <Compile Include="Exceptions\EntityValidationRepositoryException.cs" />
-    <Compile Include="Exceptions\EntityRepositoryException.cs" />
     <Compile Include="Exceptions\RepositoryException.cs" />
     <Compile Include="Query\QueryStrategy.cs" />
     <Compile Include="Query\Strategies\SwitchQueryStrategy.cs" />
-    <Compile Include="Query\Strategies\TextSearchSpecificationStrategy.cs" />
     <Compile Include="Query\Strategies\ThenByDescendingQueryStrategyT.cs" />
     <Compile Include="Query\Strategies\ThenByQueryStrategyT.cs" />
     <Compile Include="RepositoryBase.cs" />
@@ -165,14 +147,12 @@
     <Compile Include="Query\Specification\ParameterRebinder.cs" />
     <Compile Include="Query\Specification\SpecificationQueryStrategy.cs" />
     <Compile Include="Query\Specification\TrueSpecification.cs" />
-    <Compile Include="Query\Strategies\ReverseQueryStrategy.cs" />
-    <Compile Include="Query\Strategies\SkipQueryStrategy.cs" />
-    <Compile Include="Query\Strategies\TakeQueryStrategy.cs" />
     <Compile Include="Query\Strategies\ThenByDescendingQueryStrategy.cs" />
     <Compile Include="Query\Strategies\ThenByQueryStrategy.cs" />
     <Compile Include="DefaultRepositoryInterceptors.cs" />
     <Compile Include="Utilities\Check.cs" />
     <Compile Include="Utilities\DebugCheck.cs" />
+    <Compile Include="Query\Extensions\SingleQueryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="BluePear.snk" />

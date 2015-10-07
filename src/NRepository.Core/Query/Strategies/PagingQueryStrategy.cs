@@ -1,11 +1,12 @@
 ﻿namespace NRepository.Core.Query
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
 
     public class PagingQueryStrategy : QueryStrategy
     {
+        private bool _isReentrent;
+
         public PagingQueryStrategy(int page, int pageSize, bool getRowCount = false)
         {
             GetRowCount = getRowCount;
@@ -45,13 +46,13 @@
         public int PageSize
         {
             get;
-            private set;
+
         }
 
         public int Page
         {
             get;
-            private set;
+
         }
 
         public bool GetRowCount
@@ -62,17 +63,20 @@
 
         public override IQueryable<T> GetQueryableEntities<T>(object additionalQueryData)
         {
+            var query = QueryableRepository.GetQueryableEntities<T>(additionalQueryData);
             if (GetRowCount)
             {
-                GetRowCount = false;
-                RowCount = QueryableRepository.GetQueryableEntities<T>(additionalQueryData).Count();
-                return QueryableRepository.GetQueryableEntities<T>(additionalQueryData);
+                if (_isReentrent)
+                    return query;
+
+                _isReentrent = true;
+                query = (IQueryable<T>)QueryableRepository.GetQueryableEntities<T>(additionalQueryData).ToArray().AsQueryable();
+                RowCount = query.Count();
             }
 
             var skip = Page < 1 ? 0 : (Page - 1) * PageSize;
-            var query = QueryableRepository.GetQueryableEntities<T>(additionalQueryData).Skip(skip).Take(PageSize);
-            return query;
+            var filteredQuery = query.Skip(skip).Take(PageSize);
+            return filteredQuery;
         }
     }
-
 }

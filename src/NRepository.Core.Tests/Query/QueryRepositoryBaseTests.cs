@@ -55,58 +55,8 @@
             // public T GetEntity<T>(params IQueryStrategy[] queryStrategies) where T : class
             CallAndAssertGetEntity(() => recorder.GetEntity<Person>(new OrderByQueryStrategy<Person>(), new OrderByQueryStrategy<Person>()), recorder, expectException: true);
 
-            // public T GetEntity<T>(IQueryStrategy queryStrategy, bool throwExceptionIfZeroOrManyFound) where T : class
-            CallAndAssertGetEntity(() => recorder.GetEntity<Person>(new TakeQueryStrategy(1)), recorder, expectException: false);
-
-            // public T GetEntity<T>(IQueryStrategy queryStrategy, bool throwExceptionIfZeroOrManyFound) where T : class
-            CallAndAssertGetEntity(() => recorder.GetEntity<Person>(new TakeQueryStrategy(1), false), recorder, throwSearchException: false);
         }
-
-        //[Test]
-        //public void GetEntityWithadditionalQueryData()
-        //{
-        //    Expression<Func<Person, bool>> isabelleExpression = p => p.Id == Names.IsabelleOsborne;
-        //    var additionalQueryData = "DummyData";
-
-        //    var recorder = new InMemoryRecordedQueryRepository(Persons);
-
-        //    //recorder.GetEntity<Person>(object additionalQueryData, Expression<Func<T, bool>> predicate);
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, isabelleExpression), recorder, additionalQueryData: additionalQueryData, defaultQueryStrategy: typeof(AggregateQueryStrategy));
-
-        //    //recorder.GetEntity<Person>(object additionalQueryData, ISpecificationQueryStrategy<T> specification);
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, ExpressionSpecificationStrategy), recorder, additionalQueryData: additionalQueryData);
-
-        //    //recorder.GetEntity<Person>(object additionalQueryData, Expression<Func<T, bool>> predicate, bool throwExceptionIfZeroOrManyFound);
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, ExpressionSpecificationStrategy, false), recorder, throwSearchException: false, additionalQueryData: additionalQueryData);
-
-        //    //recorder.GetEntity<Person>(object additionalQueryData, Expression<Func<T, bool>> predicate, IQueryStrategy queryStrategy, bool throwExceptionIfZeroOrManyFound);
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, isabelleExpression, new OrderByQueryStrategy<Person>(), false), recorder, queryStrategy: typeof(OrderByQueryStrategy<Person>), throwSearchException: false, additionalQueryData: additionalQueryData);
-
-        //    //recorder.GetEntity<Person>(object additionalQueryData, Expression<Func<T, bool>> predicate, params IQueryStrategy[] queryStrategies);
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, isabelleExpression, new OrderByQueryStrategy<Person>(), new OrderByQueryStrategy<Person>()), recorder, queryStrategy: typeof(AggregateQueryStrategy), additionalQueryData: additionalQueryData);
-
-        //    //recorder.GetEntity<Person>(object additionalQueryData, ISpecificationQueryStrategy<T> specification, bool throwExceptionIfZeroOrManyFound);
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, ExpressionSpecificationStrategy, false), recorder, throwSearchException: false, additionalQueryData: additionalQueryData);
-
-        //    //recorder.GetEntity<Person>(object additionalQueryData, ISpecificationQueryStrategy<T> specification, IQueryStrategy queryStrategy, bool throwExceptionIfZeroOrManyFound);
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, ExpressionSpecificationStrategy, new OrderByQueryStrategy<Person>(), false), recorder, queryStrategy: typeof(OrderByQueryStrategy<Person>), throwSearchException: false, additionalQueryData: additionalQueryData);
-
-        //    //recorder.GetEntity<Person>(object additionalQueryData, ISpecificationQueryStrategy<T> specification, params IQueryStrategy[] queryStrategies);
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, ExpressionSpecificationStrategy, new OrderByQueryStrategy<Person>(), new OrderByQueryStrategy<Person>()), recorder, queryStrategy: typeof(AggregateQueryStrategy), additionalQueryData: additionalQueryData);
-
-        //    // public T GetEntity<T>(object additionalQueryData, Expression<Func<T, bool>> predicate, bool throwExceptionIfZeroOrManyFound) 
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, p => p.Id == Names.IsabelleOsborne), recorder, additionalQueryData: additionalQueryData, defaultQueryStrategy: typeof(AggregateQueryStrategy));
-
-        //    // public T GetEntity<T>(object additionalQueryData, params IQueryStrategy[] queryStrategies) where T : class
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, new OrderByQueryStrategy<Person>(), new OrderByQueryStrategy<Person>()), recorder, specificationStrategy: DefaultSpecificationStrategyType, queryStrategy: typeof(AggregateQueryStrategy), expectException: true, additionalQueryData: additionalQueryData);
-
-        //    // public T GetEntity<T>(object additionalQueryData, IQueryStrategy queryStrategy, bool throwExceptionIfZeroOrManyFound) where T : class
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, new TakeQueryStrategy(1), false), recorder, specificationStrategy: DefaultSpecificationStrategyType, queryStrategy: typeof(TakeQueryStrategy), expectException: false, additionalQueryData: additionalQueryData, throwSearchException: false);
-
-        //    // public T GetEntity<T>(object additionalQueryData, Expression<Func<T, bool>> predicate, bool throwExceptionIfZeroOrManyFound) where T : class
-        //    CallAndAssertGetEntity(() => recorder.GetEntity<Person>(additionalQueryData, p => p.Id == Names.IsabelleOsborne, false), recorder, additionalQueryData: additionalQueryData, throwSearchException: false);
-        //}
-
+        
         [Test]
         public void GetEntities()
         {
@@ -114,15 +64,12 @@
             // var additionalQueryData = "DummyData";
 
             var recorder = new InMemoryRecordedQueryRepository(Persons);
-            var reverseStrategy = new ReverseQueryStrategy();
-            var reverseStrategy2 = new ReverseQueryStrategy();
+            var reverseStrategy = new MaterialiseQueryStrategy();
+            var reverseStrategy2 = new MaterialiseQueryStrategy();
 
             //public IQueryable<T> GetEntities<T>();
             CallAndAssertGetEntities(() => recorder.GetEntities<Person>(), recorder, expectedCount: 11);
             CallAndAssertGetEntities(() => recorder.GetEntities<Child>(), recorder, expectedCount: 5);
-
-            //public IQueryable<T> GetEntities<T>(object additionalQueryData);
-            // CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(additionalQueryData), recorder, specificationStrategy: typeof(DefaultSpecificationQueryStrategy<Parent>), additionalQueryData: additionalQueryData);
 
             //public IQueryable<T> GetEntities<T>(params IQueryStrategy[] queryStrategy);
             CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(reverseStrategy, reverseStrategy2), recorder, queryStrategyType: typeof(AggregateQueryStrategy));
@@ -139,32 +86,8 @@
             //public IQueryable<T> GetEntities<T>(ISpecificationQueryStrategy<T> specification, params IQueryStrategy[] queryStrategies);
             CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(ParentExpressionSpecificationStrategy, reverseStrategy, reverseStrategy2), recorder, queryStrategyType: typeof(AggregateQueryStrategy), expectedCount: 1);
 
-            //public IQueryable<T> GetEntities<T>(object additionalQueryData, params IQueryStrategy[] queryStrategy);
-            //CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(additionalQueryData, reverseStrategy, reverseStrategy2), recorder, specificationStrategy: typeof(DefaultSpecificationQueryStrategy<Parent>), queryStrategy: typeof(AggregateQueryStrategy), additionalQueryData: additionalQueryData);
-
-            ////public IQueryable<T> GetEntities<T>(object additionalQueryData, Expression<Func<T, bool>> predicate);
-            //CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(additionalQueryData, isabelleExpression), recorder, additionalQueryData: additionalQueryData, expectedCount: 1);
-
-            ////public IQueryable<T> GetEntities<T>(object additionalQueryData, Expression<Func<T, bool>> predicate, params IQueryStrategy[] queryStrategies);
-            //CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(additionalQueryData, reverseStrategy, reverseStrategy2), recorder, specificationStrategy: typeof(DefaultSpecificationQueryStrategy<Parent>), queryStrategy: typeof(AggregateQueryStrategy), additionalQueryData: additionalQueryData);
-
-            ////public IQueryable<T> GetEntities<T>(object additionalQueryData, ISpecificationQueryStrategy<T> specification);
-            //CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(additionalQueryData, ParentExpressionSpecificationStrategy), recorder, additionalQueryData: additionalQueryData, expectedCount: 1);
-
             //public IQueryable<T> GetEntities<T>(object additionalQueryData, ISpecificationQueryStrategy<T> specification, params IQueryStrategy[] queryStrategies);
             CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(ParentExpressionSpecificationStrategy, reverseStrategy, reverseStrategy2), recorder, queryStrategyType: typeof(AggregateQueryStrategy), expectedCount: 1);
-
-            //public IQueryable<T> GetEntities<T>(object additionalQueryData, ISpecificationQueryStrategy<T> specification, IQueryStrategy queryStrategy);
-            //CallAndAssertGetEntities(() => recorder.GetEntities<Parent>(additionalQueryData, ParentExpressionSpecificationStrategy, reverseStrategy), recorder, queryStrategy: typeof(ReverseQueryStrategy), expectedCount: 1, additionalQueryData: additionalQueryData);
-
-            ////recorder.GetEntity<Person>(object additionalQueryData, ISpecificationQueryStrategy<T> specification, params IQueryStrategy[] queryStrategies);
-            //CallAndAssertGetEntities(() => recorder.GetEntities<Person>(additionalQueryData, ExpressionSpecificationStrategy, new OrderByQueryStrategy<Person>(), new OrderByQueryStrategy<Person>()), recorder, specificationStrategy: ExpressionSpecificationStrategy.GetType(), queryStrategy: typeof(AggregateQueryStrategy), additionalQueryData: additionalQueryData, expectedCount: 1);
-
-            //// public IQueryable<T> GetEntities<T>(object additionalQueryData, Expression<Func<T, bool>> predicate, params IQueryStrategy[] queryStrategies) where T : class
-            //CallAndAssertGetEntities(() => recorder.GetEntities<Person>(additionalQueryData, p => p.Id == Names.IsabelleOsborne, new OrderByQueryStrategy<Person>(), new OrderByQueryStrategy<Person>()), recorder, specificationStrategy: ExpressionSpecificationStrategy.GetType(), queryStrategy: typeof(AggregateQueryStrategy), additionalQueryData: additionalQueryData, expectedCount: 1);
-
-            // IQueryable<T> GetQueryableEntities<T>(object additionalQueryData) where T : class
-            // CallAndAssertGetEntities(() => recorder.GetQueryableEntities<Person>(additionalQueryData), recorder, specificationStrategy: typeof(DefaultSpecificationQueryStrategy<Person>), queryStrategy: typeof(DefaultQueryStrategy), additionalQueryData: additionalQueryData, expectedCount: 11);
         }
 
         [Test]

@@ -18,7 +18,7 @@ namespace NRepository.Core.Query.Interceptors.Factories
         public IEnumerable<IFactoryQuery> QueryFactories
         {
             get;
-            private set;
+
         }
 
         public IQueryable<T> Query<T>(

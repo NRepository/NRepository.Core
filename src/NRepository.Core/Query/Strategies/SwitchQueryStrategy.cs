@@ -44,19 +44,19 @@ namespace NRepository.Core.Query
         public Func<QueryStrategy> DefaultQueryStrategyFunc
         {
             get;
-            private set;
+
         }
 
         public QueryStrategy DefaultQueryStrategy
         {
             get;
-            private set;
+
         }
 
         public ConditionalQueryStrategy[] ConditionalQueryStrategies
         {
             get;
-            private set;
+
         }
     }
 }

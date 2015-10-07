@@ -1,6 +1,5 @@
 namespace NRepository.Core.Events
 {
-    using System;
     using NRepository.Core.Query;
     using NRepository.Core.Utilities;
 
@@ -13,10 +12,6 @@ namespace NRepository.Core.Events
             QueryRepository = queryRepository;
         }
 
-        public IQueryRepository QueryRepository
-        {
-            get;
-            private set;
-        }
+        public IQueryRepository QueryRepository { get; }
     }
 }

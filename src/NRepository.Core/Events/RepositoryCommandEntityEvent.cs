@@ -17,7 +17,7 @@ namespace NRepository.Core.Events
         public object Entity
         {
             get;
-            private set;
+
         }
     }
 }

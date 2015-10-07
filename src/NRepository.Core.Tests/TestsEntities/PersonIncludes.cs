@@ -4,13 +4,14 @@ namespace NRepository.Core.Tests
 
     public static class PersonIncludes
     {
-        public static readonly string Id = PropertyInfo<Person>.GetMemberName(p => p.Id);
-        public static readonly string IsFemale = PropertyInfo<Person>.GetMemberName(p => p.IsFemale);
-        public static readonly string Title = PropertyInfo<Person>.GetMemberName(p => p.Title);
-        public static readonly string FirstName = PropertyInfo<Person>.GetMemberName(p => p.FirstName);
-        public static readonly string LastName = PropertyInfo<Person>.GetMemberName(p => p.LastName);
-        public static readonly string Partner = PropertyInfo<Person>.GetMemberName(p => p.Partner);
-        public static readonly string Pet = PropertyInfo<Person>.GetMemberName(p => p.Pet);
-        public static readonly string SortValue = PropertyInfo<Person>.GetMemberName(p => p.SortValue);
+        private static Person _Person = default(Person);
+        public static readonly string Id = nameof(_Person.Id);
+        public static readonly string IsFemale = nameof(_Person.IsFemale);
+        public static readonly string Title = nameof(_Person.Title);
+        public static readonly string FirstName = nameof(_Person.FirstName);
+        public static readonly string LastName = nameof(_Person.LastName);
+        public static readonly string Partner = nameof(_Person.Partner);
+        public static readonly string Pet = nameof(_Person.Pet);
+        public static readonly string SortValue = nameof(_Person.SortValue);
     }
 }

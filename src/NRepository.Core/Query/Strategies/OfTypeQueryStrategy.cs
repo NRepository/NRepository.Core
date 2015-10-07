@@ -22,7 +22,7 @@ namespace NRepository.Core.Query
         public Type Type
         {
             get;
-            private set;
+
         }
 
         public override IQueryable<T> GetQueryableEntities<T>(object additionalQueryData)

@@ -18,8 +18,8 @@
         [Test]
         public void CheckQueryStrategyOnCondition()
         {
-            var strategy = new ReverseQueryStrategy();
-            ConditionalExtensions.OnCondition(strategy, true).GetType().ShouldEqual(typeof(ReverseQueryStrategy));
+            var strategy = new MaterialiseQueryStrategy();
+            ConditionalExtensions.OnCondition(strategy, true).GetType().ShouldEqual(typeof(MaterialiseQueryStrategy));
             ConditionalExtensions.OnCondition(strategy, false).GetType().ShouldEqual(typeof(DefaultQueryStrategy));
         }
 

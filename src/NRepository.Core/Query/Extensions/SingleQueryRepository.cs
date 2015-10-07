@@ -3,7 +3,7 @@ namespace NRepository.Core.Query
     using NRepository.Core.Utilities;
     using System.Linq;
 
-    public class SingleQueryRepository<T> : IQueryableRepository where T : class
+    internal class SingleQueryRepository<T> : IQueryableRepository where T : class
     {
         private readonly IQueryable<T> _Query;
 

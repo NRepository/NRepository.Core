@@ -1,6 +1,5 @@
 namespace NRepository.Core.Query
 {
-    using System;
     using System.Linq;
 
     public class MaterialiseQueryStrategy : QueryStrategy

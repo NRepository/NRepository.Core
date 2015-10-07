@@ -1,9 +1,4 @@
-﻿using NRepository.Core.Query;
-using NRepository.Core.Query.Specification;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using NUnit.Framework;
 
 namespace BluePear.Repository.CoreTests.Query
 {

@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NRepository.Core.Tests</RootNamespace>
     <AssemblyName>NRepository.Core.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -47,9 +47,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NRepository.TestKit, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NRepository.TestKit.3.1.0.0\lib\net45\NRepository.TestKit.dll</HintPath>
+    <Reference Include="NRepository.TestKit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NRepository.TestKit.4.0.0.0\lib\net452\NRepository.TestKit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="Command\EmptyInterceptors.cs" />
     <Compile Include="PersonsData.cs" />
+    <Compile Include="PropertyInfoTests.cs" />
     <Compile Include="Query\ConditionalExtensionTests.cs" />
     <Compile Include="Query\QueryStrategies\PagingQueryStrategyTests.cs" />
     <Compile Include="Query\QueryStrategies\MaterialiseQueryStrategyTests.cs" />
@@ -78,14 +79,10 @@
     <Compile Include="_ToImplement\InMemoryTests.cs" />
     <Compile Include="Query\Interceptors\InterceptorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyInfoTests.cs" />
     <Compile Include="Query\EventHandlers\QueryEventHandlersTests.cs" />
     <Compile Include="Query\QueryStrategies\AggregateQueryStrategyTests.cs" />
     <Compile Include="Query\QueryStrategies\OrderByDescendingQueryStrategyTests.cs" />
     <Compile Include="Query\QueryStrategies\OrderByQueryStrategyTests.cs" />
-    <Compile Include="Query\QueryStrategies\ReverseQueryStrategyTests.cs" />
-    <Compile Include="Query\QueryStrategies\SkipQueryStrategyTests.cs" />
-    <Compile Include="Query\QueryStrategies\TakeQueryStrategyTests.cs" />
     <Compile Include="Query\QueryStrategies\ThenByDescendingQueryStrategyTests.cs" />
     <Compile Include="Query\QueryStrategies\ThenByQueryStrategyTests.cs" />
     <Compile Include="Query\QueryRepositoryBaseTests.cs" />

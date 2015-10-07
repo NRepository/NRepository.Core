@@ -5,12 +5,8 @@
     using System.Linq.Expressions;
 
     /// <summary>
-    /// Base contract for Specification pattern, for more information
-    /// about this pattern see http://martinfowler.com/apsupp/spec.pdf
-    /// or http://en.wikipedia.org/wiki/Specification_pattern.
-    /// This is really a variant implementation where we have added Linq and
-    /// lambda expression into the pattern.
-    /// </summary>
+    /// Base contract for Specification pattern
+    /// /// </summary>
     /// <typeparam name="T">Type of entity this specification applies to.</typeparam>
     public interface ISpecification<T>
     {

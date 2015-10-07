@@ -13,10 +13,5 @@ namespace NRepository.Core.Command
             var retVal = saveFunc.Invoke();
             return retVal;
         }
-
-        public bool ThrowOriginalException
-        {
-            get { return false; }
-        }
     }
 }

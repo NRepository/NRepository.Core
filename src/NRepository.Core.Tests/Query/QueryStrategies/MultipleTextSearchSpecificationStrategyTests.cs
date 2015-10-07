@@ -1,14 +1,12 @@
 namespace NRepository.Core.Query.Tests
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using NUnit.Framework;
     using Query;
+    using System.Linq;
     using TestKit;
 
     [TestFixture()]
-    public class MultipleTextSearchSpecificationStrategyTests
+    public class TextSearchSpecificationStrategyTests
     {
         private class Item
         {
@@ -29,7 +27,7 @@ namespace NRepository.Core.Query.Tests
 
             var repository = new InMemoryRepository(entities);
             var items = repository.GetEntities<Item>(
-                new MultipleTextSearchSpecificationStrategy<Item>("x", p => p.Item1, p => p.Item2));
+                new TextSearchSpecificationStrategy<Item>("x", p => p.Item1, p => p.Item2));
 
             items.Count().ShouldEqual(2);
         }

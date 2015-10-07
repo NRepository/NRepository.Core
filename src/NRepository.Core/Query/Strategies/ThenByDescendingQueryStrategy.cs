@@ -19,13 +19,13 @@ namespace NRepository.Core.Query
         public string PropertyName
         {
             get;
-            private set;
+
         }
 
         public IEnumerable<string> PropertyNames
         {
             get;
-            private set;
+
         }
 
         public override IQueryable<T> GetQueryableEntities<T>(object additionalQueryData)

@@ -23,7 +23,7 @@ namespace NRepository.Core.Query
         public Expression<Func<TEntity, bool>> WhereExpression
         {
             get;
-            private set;
+
         }
 
         public override IQueryable<T> GetQueryableEntities<T>(object additionalQueryData)

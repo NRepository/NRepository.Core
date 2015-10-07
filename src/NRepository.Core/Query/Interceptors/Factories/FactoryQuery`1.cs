@@ -14,7 +14,7 @@ namespace NRepository.Core.Query.Interceptors.Factories
 
         public bool IsProcessing { get; set; }
         public Type Type { get { return _Type; } }
-        public bool IsReentrent { get; private set; }
+        public bool IsReentrent { get; }
 
         public abstract IQueryable<object> Query<TEntity>(IQueryRepository repository, object additionalQueryData) where TEntity : class;
     }

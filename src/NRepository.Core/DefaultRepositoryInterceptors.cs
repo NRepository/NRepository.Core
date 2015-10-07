@@ -4,7 +4,7 @@ namespace NRepository.Core
     using NRepository.Core.Query;
     using NRepository.Core.Utilities;
     
-    public class DefaultRepositoryInterceptors : RepositoryInterceptors
+    public sealed class DefaultRepositoryInterceptors : RepositoryInterceptors
     {
         public DefaultRepositoryInterceptors()
         {
