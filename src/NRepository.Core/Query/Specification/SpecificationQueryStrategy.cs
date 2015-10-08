@@ -90,11 +90,9 @@
 
         public IQueryable<T> GetQueryableEntities<T>(object additionalQueryData) where T : class
         {
-            var result = (IQueryable<T>)QueryableRepository.GetQueryableEntities<T>(additionalQueryData)
-                .OfType<TEntity>()
-                .Where(SatisfiedBy(additionalQueryData));
-
-            return result;
+            var cast = (IQueryable<TEntity>)QueryableRepository.GetQueryableEntities<T>(additionalQueryData);
+            var result = Queryable.Where(cast, SatisfiedBy(additionalQueryData));
+            return (IQueryable<T>)result;
         }
 
         //  User-defined conversion from double to Digit 
